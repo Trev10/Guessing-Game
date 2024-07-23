@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <h1>Welcome to the Guessing Game</h1>
+  <div id="demo"></div>
+  <script>
+    let counter = 0;
+    guess = prompt(`Guess a Number between 1 and 10.`);
+    do{
+      randomNumber = Math.floor(Math.random() * 10) + 1;
+      document.getElementById("demo").innerHTML = "The number is " + randomNumber;
+      console.log(randomNumber)
+      do{
+        if(guess > randomNumber && guess < 11){
+          console.log("Your guess was too high, guess again.");
+          guess = prompt("Your guess was too high, guess again.");
+          counter++;
+        } else if(guess < randomNumber && guess < 11){
+          console.log("Your guess was too low, guess again.");
+          guess = prompt("Your guess was too low, guess again.");
+          counter++;
+        } else{
+          console.log("Please enter a number between 1 and 10.");
+          guess = prompt("Please enter a number between 1 and 10.");
+          counter++;
+        }
+      }while(guess != randomNumber);
+      if(guess == randomNumber){
+        console.log("You guessed it in " + counter + " guesses!");
+        guess = prompt(`You guessed it in ${counter} " guesses! Enter "continue" to continue the game or enter anything else and click enter to exit the game.`);
+      }
+    }while(guess == "continue");
+  </script>
+</body>
+
+</html>
